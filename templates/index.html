@@ -19,58 +19,53 @@
 {%endblock%}
 {%block contenido%}
 
-  <div class="row" id="actualidad">
+<div id="acerca-de">
+  <div class="row">
+    <div class="span3">&nbsp;</div>
+    <div class="span8">
+      <h2>SOBRE INICIATIVA DE INTERCAMBIO</h2>
+      <p>Sed posuere consectetur est at lobortis. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
+      </p>
+    </div>
+    <div class="span1">&nbsp;</div>
+  </div>
+</div>
+
+
+  <div id="actualidad">
+
     <div class="encabezado">
       <div class="container">
         <div class="row">
         <div class="span12 encabezado-title">
-          ACTUALIDAD DE CONTRAPARTES
+          NOTICIAS Y EVENTOS
         </div>
       </div>
       </div>
     </div>
+
     <div class="container">
       <div class="row">
-<div class="span9">
-    <div id="slider1">
-        <div>
+        <div class="span8">
+
                {% for nota in notas%}
                   <div class="cuadronota">
-                   <div class="pais-index">{{nota.user.userprofile.contraparte.pais.nombre}}<img src="/files/img/{{nota.user.userprofile.contraparte.pais.codigo}}.png"></div>
                    {%for thumb in nota.fotos.all|slice:"1"%} 
                          <img class="imagen-noticia-index" src="{{thumb.foto.url_220x160}}">
+                         <div class="pais-index">{{nota.user.userprofile.contraparte.pais.nombre}}</div>
                    {%endfor%}
                    <div class="titulo-noticia-index">
-                     {{nota.titulo}}
+                     <a href="/notas/{{nota.id}}">{{nota.titulo}}</a>
                    </div>
                    <div class="detalle-noticia-index">
-                     {{nota.contenido|safe|truncatewords_html:20}}
+                     {{nota.contenido|safe|truncatewords_html:30}}
                    </div>
-                   <a href="/notas/{{nota.id}}" class="btn btn-inverse btn-mini">Leer más</a>
+                   <a href="/notas/{{nota.id}}" class="btn btn-mini">+ MÁS</a>
                  </div>
               {% endfor %}   
-          </div> 
-          <div>
-               {% for nota in notas2%}
-                  <div class=" cuadronota">
-                   <div class="pais-index">{{nota.user.userprofile.contraparte.pais.nombre}}<img src="/files/img/{{nota.user.userprofile.contraparte.pais.codigo}}.png"></div>
-                   {%for thumb in nota.fotos.all|slice:"1"%} 
-                         <img class="imagen-noticia-index" src="{{thumb.foto.url_220x160}}">
-                   {%endfor%}
-                   <div class="titulo-noticia-index">
-                     {{nota.titulo}}
-                   </div>
-                   <div class="detalle-noticia-index">
-                     {{nota.contenido|safe|truncatewords_html:20}}
-                   </div>
-                   <a href="/notas/{{nota.id}}" class="btn btn-inverse btn-mini">Leer más</a>
-                 </div>
-              {% endfor %}
-          </div>
-    </div>
-</div>
+        </div>
 
-        <div class="span3 eventoindex-nuevo">
+        <div class="span4 eventoindex-nuevo">
            <div class="pais-index">Próximos Eventos</div>
            <div class="clean"></div>
           {%for e in evento%}
@@ -84,10 +79,15 @@
           {%endfor%}
           </div>
         </div>
+
+      </div>
+
+
       </div>
     </div>
   </div>
-  <div class="row">
+
+
     <div class="encabezado">
       <div class="container">
         <div class="row">
@@ -113,5 +113,5 @@
          {%endfor%}
       </div>
     </div>
-  </div>
+ 
 {%endblock%}
