@@ -47,39 +47,44 @@
     <div class="container">
       <div class="row">
         <div class="span8">
-
-               {% for nota in notas%}
-                  <div class="cuadronota">
-                   {%for thumb in nota.fotos.all|slice:"1"%} 
-                         <img class="imagen-noticia-index" src="{{thumb.foto.url_220x160}}">
-                         <div class="pais-index">{{nota.user.userprofile.contraparte.pais.nombre}}</div>
-                   {%endfor%}
-                   <div class="titulo-noticia-index">
-                     <a href="/notas/{{nota.id}}">{{nota.titulo}}</a>
-                   </div>
-                   <div class="detalle-noticia-index">
-                     {{nota.contenido|safe|truncatewords_html:30}}
-                   </div>
-                   <a href="/notas/{{nota.id}}" class="btn btn-mini">+ MÁS</a>
-                 </div>
-              {% endfor %}   
+           {% for nota in notas%}
+              <div class="cuadronota">
+               {%for thumb in nota.fotos.all|slice:"1"%} 
+                     <img class="imagen-noticia-index" src="{{thumb.foto.url_220x160}}">
+                     <div class="pais-index">{{nota.user.userprofile.contraparte.pais.nombre}}</div>
+               {%endfor%}
+               <div class="titulo-noticia-index">
+                 <a href="/notas/{{nota.id}}">{{nota.titulo}}</a>
+               </div>
+               <div class="detalle-noticia-index">
+                 {{nota.contenido|safe|truncatewords_html:30}}
+               </div>
+               <a href="/notas/{{nota.id}}" class="btn btn-mini">+ MÁS</a>
+             </div>
+          {% endfor %}   
         </div>
 
-        <div class="span4 eventoindex-nuevo">
-           <div class="pais-index">Próximos Eventos</div>
-           <div class="clean"></div>
+        <div class="span4">
+          <h5 class="evento-bloque-title"><img src="/files/img/evento-icon.png">EVENTOS</h5>
+          <div id="bloque-evento">
           {%for e in evento%}
-            <div class="index-fechaevento-nuevo">
-              <center>{{e.inicio|date:"d F" }}</center>
+            <div class="evento-index">
+              <div class="evento-fecha">
+                {{e.inicio|date:"d b" }}
+              </div>
+              <div class="evento-titulo">
+                <a href="/agendas/eventos/{{e.id}}">{{e.evento|safe|truncatewords_html:8}} </a>
+              </div>
+              
+                {{e.descripcion|safe|truncatewords_html:12}}
+              
+              <div class="clean"></div>
             </div>
-            <div class="index-nombreevento-nuevo">
-              <a href="/agendas/eventos/{{e.id}}">{{e.evento|safe|truncatewords_html:8}} </a>
-            </div>
-            <div class="clean"></div>
           {%endfor%}
+            <a href="#" class="mas-evento">MAS EVENTOS</a>
+          </div>
           </div>
         </div>
-
       </div>
 
 
@@ -99,18 +104,23 @@
     </div>
     <div class="container">
       <div class="row">
-         {%for p in paises%}
-            <div class="span3 org-footer">
-               <div class="pais-footer"><img src="/files/img/{{p.codigo}}-g.png">{{p.nombre}}</div>
-               <ul>
-                  {%for c in contrapartes%}
-                      {%if c.pais.id == p.id %}
-                         <li><a href="{{c.get_absolute_url}}">{{c.siglas}}</a></li>  
-                      {%endif%}
-                  {%endfor%}       
-               </ul>
-            </div>
-         {%endfor%}
+        <div class="span12 paises">
+          <div class="organizaciones">
+             {%for p in paises%}
+                <div class="org-footer">
+                   <div class="pais-footer"><img src="/files/img/{{p.codigo}}.png">{{p.nombre}}</div>
+                   <ul>
+                      {%for c in contrapartes%}
+                          {%if c.pais.id == p.id %}
+                             <li><a href="{{c.get_absolute_url}}">{{c.siglas}}</a></li>  
+                          {%endif%}
+                      {%endfor%}       
+                   </ul>
+                </div>
+             {%endfor%}
+             <div class="clearfix"></div>
+          </div>
+        </div>
       </div>
     </div>
  

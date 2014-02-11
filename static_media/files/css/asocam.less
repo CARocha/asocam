@@ -170,7 +170,6 @@ form hr{margin-top:10px; margin-bottom:10px;}
 .encabezado{
 	height:31px;
 	border-bottom:#b9b9b9 1px solid;
-	margin-bottom:10px;
 	background: #fff;
 }
 
@@ -297,7 +296,7 @@ form hr{margin-top:10px; margin-bottom:10px;}
 }
 .cuadronota{
 	width:100%;
-	margin: 10px 20px;
+	margin: 20px 20px 0px 20px;
 	text-align: left;
 	float: left;
 	position: relative;
@@ -312,7 +311,7 @@ form hr{margin-top:10px; margin-bottom:10px;}
 	}
 	img{
 		float: left;
-		margin-right: 10px;
+		margin-right: 15px;
 	}
 	.btn{
 		background: #fff;
@@ -334,23 +333,43 @@ form hr{margin-top:10px; margin-bottom:10px;}
 .pais-footer{
 	font-size:13px;
 	color:#888;
-	height:30px;
-	line-height:30px;
+	height:40px;
+	line-height:40px;
 	margin-bottom:10px;
+	border-bottom: #dadada 1px solid;
+	padding-left: 15px;
 	img{
 		margin-right:5px;
 	}
 }
 
-.org-footer{margin-bottom:15px}
+.paises{
+	background: #fff;
+}
+
+.organizaciones{
+	background: #edede5;
+	border:#ccccb0 1px solid;
+	padding:10px;
+	margin:20px;
+}
+
+.org-footer{
+	margin-bottom:15px;
+	float:left;
+	width: 190px;
+	background: #fff;
+	margin-right: 25px;
+}
 
 .org-footer ul{
 	margin-left:0px;
 	li{
-		background:url(/files/img/orgdivider.png) no-repeat bottom center;
-		height:34px;
-		line-height:34px;
+		height:30px;
+		line-height:30px;
 		list-style:none;
+		background:url(/files/img/lista-org.png) no-repeat center left;
+		padding-left: 18px;
 		a{
 			font-size:13px;
 			font-weight:bold;
@@ -359,9 +378,60 @@ form hr{margin-top:10px; margin-bottom:10px;}
 	}
 }
 
-.dividerline{
-	background:url(/files/img/dividerline.png) repeat-x;
-	height:11px;
+#bloque-evento{
+	width: 88%;
+	margin-left: 15px;
+	background: #e6e6e6;
+	padding-top:20px;
+}
+
+.evento-bloque-title{
+	color:#99ca64;
+	font-size: 13px;
+	margin-left: 20px;
+	margin-top:20px;
+	margin-bottom: 20px;
+	img{
+		margin-right: 10px;
+		float: left;
+	}
+}
+
+.mas-evento{
+	width: 100%;
+	background: @green;
+	display: block;
+	height: 40px;
+	line-height: 40px;
+	color:#d2e8ba;
+	text-align: center;
+	text-decoration: none;
+	&:hover{
+		text-decoration: none;
+		background: @green + 20;
+		color:#fff;
+	}
+}
+
+.evento-index{
+	width: 195px;
+	background: url(/files/img/evento-timeline.png) no-repeat 20px top;
+	padding-left:40px;
+	padding-bottom: 25px;
+	color:#555753;
+	.evento-fecha{
+		color:#888a85;
+		background: #fff;
+		padding:3px 5px;
+		width: 40px;
+		margin-bottom:5px;
+	}
+	.evento-titulo{
+		a{
+			color:@blue;
+			font-weight: bold;
+		}
+	}
 }
 
 .footer{
