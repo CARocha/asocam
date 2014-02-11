@@ -60,7 +60,7 @@ class Contraparte(models.Model):
         unique_together = ("font_color", "nombre")
 
     def __unicode__(self):
-        return self.nombre
+        return self.siglas
 
     def get_absolute_url(self):
         return '/contrapartes/%d/' % (self.id,)
