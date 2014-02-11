@@ -177,7 +177,5 @@ CKEDITOR_CONFIGS = {
         'width': 'auto',
         'height': 170,
         'toolbarCanCollapse': False,
-        'skin':'kama',
-        'uiColor': '#EEe',
     }
 }
