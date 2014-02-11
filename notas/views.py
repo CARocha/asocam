@@ -86,7 +86,7 @@ def index(request):
     notas2 = Notas.objects.all().order_by('-fecha','-id')[3:6]
     evento = Agendas.objects.filter(publico=True).order_by('-inicio')[:3]
     paises = Pais.objects.all()
-    contrapartes = Contraparte.objects.all()
+    contrapartes = Contraparte.objects.filter(visible=True)
 
     return render_to_response('index.html', locals(),
                               context_instance=RequestContext(request))
