@@ -53,13 +53,14 @@ class Contraparte(models.Model):
     sitio_web = models.URLField(blank=True, null=True)
     rss = models.CharField(max_length=200,blank=True, null=True)
     font_color = ColorField(blank=True,unique=True)
+    visible = models.BooleanField()
 
     class Meta:
         verbose_name_plural = "Contrapartes"
         unique_together = ("font_color", "nombre")
 
     def __unicode__(self):
-        return self.nombre
+        return self.siglas
 
     def get_absolute_url(self):
         return '/contrapartes/%d/' % (self.id,)
