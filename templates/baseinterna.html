@@ -10,7 +10,7 @@
   {% load compress %}
   {% compress css %}
     <link type="text/css" rel="stylesheet"  href="/files/bootstrap/css/bootstrap.min.css" >
-    <link type="text/css" rel="stylesheet"  href="/files/css/cafod.css">
+    <link type="text/css" rel="stylesheet"  href="/files/css/asocam.css">
     <link type="text/css" rel="stylesheet"  href="/files/css/jquery.fancybox.css" >
   {% endcompress %}
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
@@ -22,49 +22,54 @@
   {%block extra_js%}{%endblock%}
 </head>
 <body>
-
+<main id="main-container" class="container">
 {% block header %}
-  
+      {% if user.username %}
+      <div id="botones-usuario" class="btn-group pull-right">
+         <a class="btn btn-success" href="/foros/perfil"><i class="icon-user opacidad-50"></i>Bienvenido {{ user.username }}</a>
+         <a class="btn btn-success" href="/contrapartes/estadisticas/ver"><i class="icon-signal opacidad-50"></i>Estadísticas</a>
+         <a  class="btn btn-success" href="/accounts/logout" title="Salir de Administración"><i class="icon-off opacidad-50"></i>Salir</a>
+      </div>
+      <div class="clearfix"></div>
+    {% endif %}
+
     <div class="navbar ">
         <div class="navbar-inner">
             <div class="container">
-              <a class="brand" href="/">
-                <i class="icon-home icon-white opacidad-50"></i>Plataforma de comunicación y aprendizaje
-              </a>
+              <ul class="nav" id="menu-principal">
+                <li class="active"><a href="/"><img src="/files/img/home-icon.png"></a></li>
+                <li><a href="/notas">NOTICIAS</a></li>
+                <li><a href="#">SOBRE LA INICIATIVA DE INTERCAMBIO </a></li>
+                <li><a href="#">PROPÓSITOS Y RESULTADOS </a></li>
+                <li><a href="#">¿QUÉ ENTENDEMOS POR INNOVACIÓN? </a></li>
+                <li><a href="#">¿QUÍENES PARTICIPAN? </a></li>
+                <li><a href="#">RECURSOS </a></li>
+              </ul>
               <ul class="nav pull-right">
-                  <li class="divider-vertical"></li>
-                  {% if user.username %}
-                    <li ><a href="/foros/perfil"><i class="icon-user icon-white opacidad-50"></i>Bienvenido {{ user.username }}</a></li>
-                    <li class="divider-vertical"></li>
-                    <li ><a href="/contrapartes/estadisticas/ver"><i class="icon-signal opacidad-50 icon-white"></i>Estadísticas</a></li>
-                    <li class="divider-vertical"></li>
-                    <li><a href="/accounts/logout" title="Salir de Administración"><i class="icon-off opacidad-50 icon-white"></i>Salir</a></li>
-                  {% else %}
-                    <li><a href="/accounts/login"><i class="icon-user opacidad-50 icon-white"></i>Entrar</a></li>
+                  {%if not user.username%}
+                    <a href="/accounts/login" id="entrar-boton"><img src="/files/img/entrar-icon.png">Entrar</a>
                   {% endif %}
               </ul>
-              {% load_searchform %}
             </div>
         </div>
     </div>
-    <div class="row" id="grisheader-interna">
+
+    <div id="grisheader">
       <div class="container">
         <div class="row">
-          <div class="span12" id="menulogo">
-              <div class="row">
-                  <div class="span8 offset4" id="menu">
-                    <a href="/" class="iniciomenu">Inicio</a>
-                    <a href="/notas" class="blogmenu">Notas</a>
-                      <a href="/acerca" class="acercamenu">Acerca de</a>
-                      <a href="/contrapartes" class="contrapartemenu">Contrapartes</a>
-                      <a href="/agendas/eventos" class="eventomenu">Eventos</a>
-                      <div class="clean"></div>
-                  </div>
-              </div>
-          </div>
+           <div class="span5" id="banner">
+                <img src="/files/img/banner-foto.jpg">
+            </div>
+           <div class="span7 bienvenida">
+               <h1 class="page-title">Plataforma de intercambios e inter-aprendizajes regionales en el tema de innovación agropecuaria y desarrollo económico
+              </h1>
+           </div>
+        </div>
       </div>
     </div>
+
   </div>
+
 
 {% endblock %}
 
@@ -72,21 +77,42 @@
 
 {%block footer%}
   <footer>
-      <div class="row dividerline">
-      </div>
-      <div class="row footer">
+      <div class="footer">
         <div class="container">
             <div class="row">
-              <div class="span12 footerinterior">
-                <div class="footertext1">Programa Medios de Vida Sostenible</div>
-                <div class="footertext2">ASOCAM es un Servicio de Gestión de Conocimientos para América Latina de la Fundación Intercooperation América Latina y Helvetas Swiss Intercooperation promovido desde hace más de una década con el apoyo de la Agencia Suiza para el Desarrollo y la Cooperación (COSUDE) </div>
-                <div class="footertext2">Desarrollado por <a href="http://www.simas.org.ni/">SIMAS</a></div>
+              <div class="span4">
+                <div class="footer-block">
+                <h4>Esta es una iniciativa promovida por COSUDE</h4>
+                <a href="http://www.simas.org.ni"><img src="/files/img/cosudelogo.png"></a>
+                </div>
+              </div>
+              <div class="span4">
+                <div class="footer-block">
+                <h4>Esta desarrollo de la plataforma contó con la colaboración de SIMAS y ASOCAM</h4>
+                <center class="footer-logos">
+                  <a href="http://www.simas.org.ni"><img class="simaslogo"src="/files/img/simaslogo.png"></a>
+                  <a href="http://www.asocam.org/portal/"><img src="/files/img/asocamlogo.png"></a>
+                </center>
+                </div>
+              </div>
+              <div class="span4">
+                <div class="footer-block">
+                  <h4>Contacto</h4>
+                  <p>COSUDE- CA marylaure.crettaz@eda.admin.ch</p>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="span12">
+                <div class="footer-bottom">
+                Plataforma de intercambios e inter-aprendizajes regionales en el tema de innovación agropecuaria y desarrollo económico    |     Copyright 2014
+                </div>
               </div>
             </div>
         </div>
       </div>
   </footer>
 {%endblock%}
-
+</div>
 </body>
 </html>

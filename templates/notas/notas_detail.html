@@ -45,44 +45,47 @@ $(".alert").alert();
 {%endblock%}
 {% block contenido %}
 
-<div class="row">
-    <div class="encabezado">
+    <div class="encabezado encabezado-interno">
       <div class="container">
             <div class="row">
-                <div class="span5">
+                <div class="span12">
                     <div class="encabezado-title">
                         NOTAS 
                     </div>
                 </div>
-                <div class="span7">
-                </div>
             </div>
       </div>
     </div>
-</div>
-<div class="row">
-    <div class="container">
+
+
+    <div class="container internal-content">
         <div class="row">
             <div class="span7">
-                {% if request.GET.shva == 'ok' %}
-                  <div class="alert fade in">
-                      La nota ha sido editada con &eacute;xito!
-                      <a class="close" href="#" data-dismiss="alert">x</a>
-                  </div>
-                {% endif %}
-               <h1 class="titulo-grande">{{nota.titulo}}</h1>
-               <div class="extrainfofull">{{nota.fecha}}  |  {{nota.user.userprofile.contraparte.pais.nombre}}</div>
+              <div class="content-left">
+                  {% if request.GET.shva == 'ok' %}
+                    <div class="alert fade in">
+                        La nota ha sido editada con &eacute;xito!
+                        <a class="close" href="#" data-dismiss="alert">x</a>
+                    </div>
+                  {% endif %}
+                 <h1 class="titulo-grande">{{nota.titulo}}</h1>
+                 <div class="extrainfofull">{{nota.fecha}}  |  {{nota.user.userprofile.contraparte.pais.nombre}}</div>
+              </div>
             </div>
             <div class="span5">
-                
-                <a class="contraparte-nota btn " href="/contrapartes/{{nota.user.userprofile.contraparte.id}}"><img src="{{nota.user.userprofile.contraparte.logo.url_70x60}}">{{nota.user.userprofile.contraparte.nombre}}</a>
+                <div class="content-right">
+                  <a class="contraparte-nota btn " href="/contrapartes/{{nota.user.userprofile.contraparte.id}}"><img src="{{nota.user.userprofile.contraparte.logo.url_70x60}}">{{nota.user.userprofile.contraparte.nombre}}</a>
+                </div>
             </div>
         </div>
         <div class="row ">
             <div class="span7 divisordoble">
+              <div class="content-left">
                 {{nota.contenido|safe}}
+              </div>
             </div>
             <div class="span5 divisordoble">
+              <div class="content-right">
                 <div id="slider1">
                     {% for imagen in nota.fotos.all%}
                     <div>
@@ -115,7 +118,7 @@ $(".alert").alert();
                       </tbody>
                     </table>
                 {%endif%}
-                
+              </div>
             </div>
         </div>
 
@@ -127,6 +130,7 @@ $(".alert").alert();
         </div>
         <div class="row">
           <div class="span12">
+            <div class="content-left content-right">
             <div class="encabezado-title raya">COMENTARIOS</div>
             {% for comentario in nota.comentarionotas_set.all %}         
             <div class="well" id="cmt{{comentario.id}}">{{comentario.comentario|safe}}
@@ -155,12 +159,13 @@ $(".alert").alert();
 
                     <input class="btn btn-large btn-success " style="" type="submit" id="submitfoo" value="Guardar" />
                   
-            </form>  
+            </form>
+            </div>  
           </div>
           </div>
         </div>
         {%endif%}
 
     </div>
-</div>
+ 
 {% endblock %}

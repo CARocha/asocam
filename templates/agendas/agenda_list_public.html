@@ -43,11 +43,11 @@
 </script>
 {%endblock%}
 {% block contenido %}
-<div class="row">
-	<div class="encabezado">
+
+	<div class="encabezado encabezado-interno">
 	  <div class="container">
 		    <div class="row">
-			    <div class="span5">
+			    <div class="span12">
 			    	<div class="encabezado-title">
 			      		AGENDA DE ACTIVIDADES
 			  		</div>
@@ -55,9 +55,9 @@
 	        </div>
 	  </div>
 	</div>
-</div>
-<div class="row">
-	<div class="container">
+
+
+	<div class="container internal-content">
 		{%if actividad %}
 		<div class="row">
 			<div {%if actividad.adjunto.all %}class="span8"{%else%} class="span12"{%endif%}>
@@ -73,7 +73,8 @@
 				</div>
 			</div>
 			{%if actividad.adjunto.all %}
-			<div class="span4">				
+			<div class="span4">
+			<div class="content-right">				
 				<div class="sidebar-title">Documentos</div>
                 <table class="table  table-bordered table-condensed doc-sidebar">
                   <tbody>
@@ -85,6 +86,7 @@
                     {% endfor %}
                   </tbody>
                 </table>
+            </div>
 			</div>
 			{%endif%}
 		</div>
@@ -92,9 +94,12 @@
 		{%endif%}
 		<div class="row">
 			<div class="span9">
-				<div id='calendar'></div><Br>
+				<div class="content-left">
+					<div id='calendar'></div><Br>
+				</div>
 			</div>
 			<div class="span3"><br><br>
+				<div class="content-right">
 				<ul class="nav nav-list well">
 
 						 {% for pais in paises %}
@@ -114,9 +119,10 @@
 						 {% endfor %}
 						</form>
 				</ul>
+				</div>
 
 			</div>
 		</div>
 	</div>
-</div>
+
 {% endblock %}

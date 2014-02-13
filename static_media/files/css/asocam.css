@@ -83,6 +83,20 @@ p {
 .clean {
   clear: both;
 }
+.btn,
+.well,
+.alert {
+  border-radius: 0 !important;
+  -ms-border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  -webkit-border-radius: 0 !important;
+  -khtml-border-radius: 0 !important;
+  border-radius: 0;
+  -ms-border-radius: 0;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  -khtml-border-radius: 0;
+}
 /*Sobre escribiendo propiedades de Bootstrap */
 .navbar {
   margin-bottom: 0px;
@@ -231,10 +245,27 @@ form hr {
   background: #f5f5f4;
   padding-bottom: 20px;
 }
+.internal-content {
+  background: #fff;
+}
+.internal-content p {
+  color: #525252;
+}
+.content-left {
+  padding-top: 20px;
+  padding-left: 20px;
+}
+.content-right {
+  padding-top: 20px;
+  padding-right: 20px;
+}
 .encabezado {
   height: 31px;
-  border-bottom: #b9b9b9 1px solid;
+  border-bottom: #c7c7c7 1px solid;
   background: #fff;
+}
+.encabezado-interno {
+  border-top: #c7c7c7 1px solid;
 }
 .encabezado-title {
   color: #757575;
@@ -383,6 +414,24 @@ form hr {
 .cuadronota .btn:hover {
   border: #18c262 1px solid;
 }
+.btn-asocam {
+  background: #fff;
+  border-radius: 0px !important;
+  -ms-border-radius: 0px !important;
+  -moz-border-radius: 0px !important;
+  -webkit-border-radius: 0px !important;
+  -khtml-border-radius: 0px !important;
+  border-radius: 0px;
+  -ms-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
+  -khtml-border-radius: 0px;
+  border: #04ae4e 1px solid;
+  color: #04ae4e;
+}
+.btn-asocam:hover {
+  border: #18c262 1px solid;
+}
 .index-descripevento {
   color: #423724;
   font-size: 11px;
@@ -515,16 +564,29 @@ form hr {
 }
 .titulo-medio {
   font-size: 16px;
-  color: #016a68;
-  font-weight: bold;
+  color: #155181;
+  font-weight: 400;
 }
 .titulo-medio:hover {
-  color: #016a68;
+  color: #296595;
+  text-decoration: none;
+}
+.btn-pais {
+  border-radius: 0px !important;
+  -ms-border-radius: 0px !important;
+  -moz-border-radius: 0px !important;
+  -webkit-border-radius: 0px !important;
+  -khtml-border-radius: 0px !important;
+  border-radius: 0px;
+  -ms-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
+  -khtml-border-radius: 0px;
 }
 .titulo-grande {
-  font-size: 22px;
-  color: #016a68;
-  font-weight: bold;
+  font-size: 20px;
+  color: #155181;
+  font-weight: 400;
   line-height: 1.2;
   margin-bottom: 5px;
 }
@@ -607,7 +669,7 @@ form hr {
   font-size: 12px;
 }
 .contraparte-nota {
-  width: 360px;
+  width: 95%;
 }
 .contraparte-nota img {
   margin-right: 10px;
@@ -623,8 +685,12 @@ form hr {
   margin-top: 10px;
 }
 .nota-sidebar .nota-sidebar-title a {
-  color: #9eb31b;
+  color: #155181;
   font-weight: bold;
+}
+.nota-sidebar .nota-sidebar-title a:hover {
+  text-decoration: none;
+  color: #246090;
 }
 .nota-sidebar img {
   float: left;
@@ -635,16 +701,19 @@ form hr {
 }
 .contraparte-tabla {
   float: right;
-  width: 350px;
+  width: 300px;
   margin-top: 10px;
 }
 .destacado-content {
-  color: #016a68;
+  color: #04ae4e;
   font-size: 15px;
   font-weight: bold;
   border-bottom: #eee 1px solid;
   padding-bottom: 4px;
   margin-bottom: 10px;
+}
+.contrapartes-list {
+  padding-top: 20px;
 }
 .form-inline {
   width: 270px;
@@ -655,7 +724,7 @@ form hr {
   margin-top: 0px;
 }
 #actionbuttons {
-  width: 180px;
+  width: 160px;
 }
 .file label {
   width: 50px;
@@ -679,7 +748,7 @@ form hr {
   position: relative;
 }
 .tab-media {
-  width: 490px;
+  width: 470px;
   float: left;
 }
 .file label {
@@ -746,43 +815,40 @@ form hr {
 .media-form-inline .hideclear {
   display: none;
 }
+.admin-icons {
+  background: #155181;
+}
 #barra-admin a {
-  height: 100px;
+  height: 80px;
   width: 112px;
   display: block;
   float: left;
   text-align: center;
-  line-height: 170px;
-  color: #666;
+  line-height: 128px;
+  color: #79b5e5;
+  border-left: #0b4777 1px solid;
 }
 #barra-admin a:hover {
   text-decoration: none;
-  color: #000;
+  color: #ffffff;
 }
 .notaiconadmin {
-  background: url(/files/img/adminnotas.png) no-repeat center center;
+  background: url(/files/img/adminnotas.png) no-repeat center 12px;
 }
 .agendaiconadmin {
-  background: url(/files/img/adminagenda.png) no-repeat center center;
+  background: url(/files/img/adminagenda.png) no-repeat center 12px;
 }
 .foroiconadmin {
-  background: url(/files/img/adminforo.png) no-repeat center center;
+  background: url(/files/img/adminforo.png) no-repeat center 12px;
 }
 .multimediaiconadmin {
-  background: url(/files/img/adminmultimedia.png) no-repeat center center;
+  background: url(/files/img/adminmultimedia.png) no-repeat center 12px;
 }
 .documentosiconadmin {
-  background: url(/files/img/admindocumentos.png) no-repeat center center;
+  background: url(/files/img/admindocumentos.png) no-repeat center 12px;
 }
 .adminmensaje {
-  background: url(/files/img/adminmensaje.png) no-repeat center center;
-}
-.divisor-barra-admin {
-  background: url(/files/img/divisoradmin.png) no-repeat bottom right;
-  width: 3px;
-  display: block;
-  float: left;
-  height: 100px;
+  background: url(/files/img/adminmensaje.png) no-repeat center 12px;
 }
 .opacidad-50 {
   opacity: 0.5;
@@ -829,11 +895,19 @@ form hr {
   z-index: -1;
   position: relative;
 }
+.visualize-labels-y li span.label {
+  width: 10px !important;
+}
+.visualize {
+  width: 820px !important;
+}
 .imagen-gal {
   float: left;
   margin-right: 4px;
   margin-bottom: 4px;
   height: 160px;
+  position: relative;
+  z-index: 999;
 }
 .imagen-gal:hover {
   box-shadow: inset 0px 0px 85px rgba(0, 0, 0, 0.7);

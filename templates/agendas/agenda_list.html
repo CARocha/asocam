@@ -43,8 +43,8 @@
 </script>
 {%endblock%}
 {% block contenido %}
-<div class="row">
-	<div class="encabezado">
+
+	<div class="encabezado encabezado-interno">
 	  <div class="container">
 		    <div class="row">
 			    <div class="span5">
@@ -60,9 +60,9 @@
 	        </div>
 	  </div>
 	</div>
-</div>
-<div class="row">
-	<div class="container">
+
+
+	<div class="container internal-content">
 		{% if request.GET.shva == 'erase' %}
             <div class="alert fade in">
                 Se ha eliminado el evento de forma permanente
@@ -110,7 +110,8 @@
 				</div>
 			</div>
 			{%if actividad.adjunto.all %}
-			<div class="span4">				
+			<div class="span4">
+			<div class="content-right">				
 				<div class="sidebar-title">Documentos</div>
                 <table class="table  table-bordered table-condensed doc-sidebar">
                   <tbody>
@@ -122,6 +123,7 @@
                     {% endfor %}
                   </tbody>
                 </table>
+               </div>
 			</div>
 			{%endif%}
 		</div>
@@ -129,9 +131,12 @@
 		{%endif%}
 		<div class="row">
 			<div class="span9">
-				<div id='calendar'></div>
+				<div class="content-left">
+				<div id='calendar'></div><br><br>
+				</div>
 			</div>
 			<div class="span3">
+				<div class="content-right">
 				<ul class="nav nav-list well">
 						<li class="nav-header">
 					    OPCIONES DE VISUALIZACIÓN
@@ -156,6 +161,7 @@
 				</ul>
 			</div>
 		</div>
+		</div>
 	</div>
-</div>
+
 {% endblock %}

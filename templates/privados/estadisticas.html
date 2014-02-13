@@ -15,11 +15,11 @@ $(function(){
 </script>
   {%endblock%}
 {% block contenido %}
-<div class="row" >
-    <div class="encabezado">
+
+    <div class="encabezado encabezado-interno">
       <div class="container">
         <div class="row">
-          <div class="span5">
+          <div class="span12">
             <div class="encabezado-title">
             ESTADÍSTICAS GENERALES DE MIEMBROS DE PLATAFORMA
             </div>
@@ -27,11 +27,12 @@ $(function(){
         </div>
       </div>
     </div>
-</div>
-<div class="row">
-      <div class="container">
+
+
+      <div class="container internal-content">
           <div class="row">
             <div class="span12">
+              <div class="content-left content-right">
                 <table class="table  table-bordered table-condensed table-striped">
                     <caption> Estadísticas</caption>
                 <thead>
@@ -59,9 +60,11 @@ $(function(){
                     {% endfor %}
                 </tbody>
                 </table>
+              </div>
             </div>
          </div>
+         <br><br>
     </div>
-</div>
-<br><br>
+
+
 {% endblock %}
