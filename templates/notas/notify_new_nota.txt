@@ -1,5 +1,5 @@
 El usuario {{nota.user}} ha publicado una nueva Nota en
-la plataforma ASOCAM
+la plataforma Innovaparadet
 
 
 Fecha: {{nota.fecha|date:"D d M Y"}}
@@ -8,5 +8,4 @@ Haga click al enlace de abajo para ver la Nota:
 http://{{url}}
 
 
-ASOCAM
-is the official Catholic aid agency for England and Wales. 
+Innovaparadet
