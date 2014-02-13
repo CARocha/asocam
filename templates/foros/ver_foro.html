@@ -37,8 +37,8 @@ $(document).ready(function() {
 
 {% load magicembed_tags %}
 {% block contenido %}
-<div class="row">
-    <div class="encabezado">
+
+    <div class="encabezado encabezado-interno">
       <div class="container">
             <div class="row">
                 <div class="span5">
@@ -71,9 +71,9 @@ $(document).ready(function() {
             </div>
       </div>
     </div>
-</div>
-<div class="row">
-	<div class="container">
+
+
+	<div class="container internal-content">
 		{% if request.GET.b == 'editado' %}
             <div class="alert fade in">
                  El foro ha sido editado
@@ -82,6 +82,7 @@ $(document).ready(function() {
         {% endif %}
 		<div class="row">
 			<div class="span8">
+				<div class="content-left">
 				<h1 class="titulo-grande">{{discusion.nombre}}</h1>
 				<div class="extrainfofull"></div>
 				{{discusion.contenido|safe}}
@@ -94,8 +95,10 @@ $(document).ready(function() {
 						<div class="clean"></div>
 					    </div>
 					{%endif%}
+				</div>
 			</div>
 			<div class="span4">
+				<div class="content-right">
 				<table class="table table-bordered table-condensed table-striped">
 					<tbody>
 						<tr>
@@ -149,7 +152,7 @@ $(document).ready(function() {
 	                  <tbody>
 	                    {% for video in discusion.video.all%}
 	                    <tr>
-	                        <td><a data-toggle="modal" data-target="#myModal{{video.id}}" href="#"><img  src="{{video.url|magicthumbnail}}" width="290" height="150">
+	                        <td><a data-toggle="modal" data-target="#myModal{{video.id}}" href="#"><img  src="{{video.url|magicthumbnail}}" width="270" height="150">
 	                        	<img src="/files/img/player.png" class="player-icon"></a>
 	                        </td>
 	                    </tr>
@@ -176,7 +179,7 @@ $(document).ready(function() {
 	                    {% for audio in discusion.audio.all%}
 	                    <tr>
 	                    	<td>{{audio.nombre_audio}}</br>
-								<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="280" height="20"
+								<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="270" height="20"
 								    codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab">
 								    <param name="movie" value="/files/js/singlemp3player.swf?file=/uploads/{{audio.audio}}&showDownload=true" />
 								    <param name="wmode" value="transparent" />
@@ -190,6 +193,7 @@ $(document).ready(function() {
 	                </table>
 				{%endif%}
 			</div>
+		</div>
 		</div>
 		<div class="row">
 			<div class="span12">
@@ -206,7 +210,8 @@ $(document).ready(function() {
 		{% for respuesta in discusion.aportes_set.all %}
 
 		<div class="row " id="{{respuesta.id}}">
-			<div class="span1">
+			<div class="span2">
+				<div class="content-left" style="padding-top:0px;">
 				<div class="label"><center>Aporte </center></div>
 				<div class="user-info">{{respuesta.fecha|date:"d M"}}</div>
 				{%if respuesta.user.userprofile.avatar %}
@@ -233,9 +238,10 @@ $(document).ready(function() {
                     <a href="#" data-dismiss="modal" class="btn">No Borrar</a>
                     <a href="/foros/aporte/borrar/{{respuesta.id}}"class="btn btn-danger">Borrar Permanentemente</a>
                   </div>
-                </div>  
+                </div> 
+                </div> 
 			</div>
-			<div class="span7">
+			<div class="span6">
 				{{respuesta.contenido|safe}}
 					<p>
 				   	<a data-fancybox-type="iframe" href="/foros/ver_comentario/{{respuesta.id}}" class="btn btn-mini btn-warning fancybox"><i class="icon-comment icon-white"></i>Comentar</a>
@@ -274,6 +280,7 @@ $(document).ready(function() {
 			        {% endfor %}
 			</div>
 			<div class="span4">
+				<div class="content-right" style="padding-top:0px;">
 				{%if respuesta.fotos.all%}
 				<div class="sidebar-title">Fotos</div>
 						<div class="thumbs" style="margin-top:10px">
@@ -302,7 +309,7 @@ $(document).ready(function() {
 	                  <tbody>
 	                    {% for video in respuesta.video.all%}
 	                    <tr>
-	                        <td><a href="" data-toggle="modal" data-target="#myModalresp{{video.id}}"><img src="{{video.url|magicthumbnail}}" width="290" height="150"><img src="/files/img/player.png" class="player-icon"></a></td>
+	                        <td><a href="" data-toggle="modal" data-target="#myModalresp{{video.id}}"><img src="{{video.url|magicthumbnail}}" width="270" height="150"><img src="/files/img/player.png" class="player-icon"></a></td>
 	                    </tr>
 	                        <div class="modal fade hide modal-video" id="myModalresp{{video.id}}">
 	                          <div class="modal-header">
@@ -327,7 +334,7 @@ $(document).ready(function() {
 	                    {% for audio in respuesta.audio.all%}
 	                    <tr>
 	                    	<td>{{audio.nombre_audio}}</br>
-								<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="280" height="20"
+								<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="270" height="20"
 								    codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab">
 								    <param name="movie" value="/files/js/singlemp3player.swf?file=/uploads/{{audio.audio}}&showDownload=true" />
 								    <param name="wmode" value="transparent" />
@@ -340,16 +347,18 @@ $(document).ready(function() {
 	                  </tbody>
 	                </table>
 				{%endif%}
+				</div>
 			</div>
+			
 		</div>
 		<hr>
 		{% endfor %}
 
 	</div>
-</div>
 
-<div class="row" id="formaporte">
-	<div class="container">
+
+<div id="formaporte">
+	<div class="container internal-content">
             <div class="row">
                 <div class="span12">
                     <div class="encabezado-title raya">
@@ -361,6 +370,7 @@ $(document).ready(function() {
         <form  enctype="multipart/form-data" action="." method="post">{% csrf_token %}
             {{ form.media }}
 			<div class="span9">
+				<div class="content-left">
 				<div class="well">
                 {%if form.errors%}
                         <div class="alert alert-error"><b>Favor corregir los siguientes errores</b><br>{{form.errors}}</div>
@@ -421,9 +431,10 @@ $(document).ready(function() {
                         </div>
                     </div>
                 </div>
-
+				</div>
 			</div>
 			<div class="span3">
+				<div class="content-right">
                 <div class="alert "><i class="icon-info-sign"></i>
                   Un aporte al foro
                 </div>
@@ -431,6 +442,7 @@ $(document).ready(function() {
                 <input class="btn btn-large btn-success " style="" type="submit" id="submitfoo" value="Guardar" />
                 <a href="/foros" class="btn btn-large">Cerrar</a>
                 </div>
+            </div>
 			</div>
 		</form>
 		</div>

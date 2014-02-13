@@ -19,8 +19,8 @@
 </script>
 {%endblock%}
 {% block contenido %}
-<div class="row">
-    <div class="encabezado">
+
+    <div class="encabezado encabezado-interno">
       <div class="container">
             <div class="row">
                 <div class="span5">
@@ -33,11 +33,12 @@
             </div>
       </div>
     </div>
-</div>
-<div class="row">
-	<div class="container">
+
+
+	<div class="container internal-content">
 		<div class="row">
 			<div class="span12">
+				<div class="content-left content-right">
 				<div class="tabbable">
 					  <ul class="nav nav-tabs">
 					    <li><a href="/foros/privado/multimedia_fotos/" ><i class="icon-camera"></i>Imágenes</a></li>
@@ -45,17 +46,19 @@
 					    <li><a href="/foros/privado/multimedia_audios/"><i class="icon-volume-up"></i>Audios</a></li>
 					  </ul>
 				</div>
+				</div>
 			</div>
 		</div>
 		<div class="row">
 			<div class="span3">
+				<div class="content-left">
 				<ul class="nav nav-list well">
 					  <li class="nav-header">
 					    BUSCAR
 					  </li>
 					  <li>
 						<form class="form-search form-inline" action="." method="GET">
-						  <input type="text" class="input-medium search-query" style="width:115px" name="q" value="{% if query %} {{query}} {% endif%}" />
+						  <input type="text" class="input-medium search-query" style="width:100px" name="q" value="{% if query %} {{query}} {% endif%}" />
 						  <button type="submit" class="btn"><i class="icon-search button-icon"></i></button>
 						</form>
 					  </li>
@@ -67,7 +70,9 @@
 				{% endfor %}
 				</ul>
 			</div>
+			</div>
 			<div class="span9">
+				<div class="content-right">
 				{%if video_sel%}
 					{{ video_sel.url|magicembed:"700x400" }}
 					{{ video_sel.nombre_video}}
@@ -80,12 +85,15 @@
 						<img src="/files/img/player.png" class="player-icon"></a>
 						<div>{{a.nombre_video}}</div>
 					</div>
+
 					{% endfor %}
 				{%endif%}
+				<div class="clearfix"></div><br>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
+
 
 
 {% endblock %}

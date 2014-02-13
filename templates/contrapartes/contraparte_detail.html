@@ -11,8 +11,7 @@
     </script>
 {% endblock %}
 {% block contenido %}
-<div class="row">
-    <div class="encabezado">
+    <div class="encabezado encabezado-interno">
       <div class="container">
             <div class="row">
                 <div class="span5">
@@ -30,12 +29,11 @@
             </div>
       </div>
     </div>
-</div>
 
-<div class="row">
-    <div class="container">
+    <div class="container internal-content">
         <div class="row">
             <div class="span7">
+                <div class="content-left">
                 {% if request.GET.shva == 'ok' %}
                 <div class="alert">
                     La informaci&oacute;n de su contraparte ha sido editada con &eacute;xito!
@@ -43,57 +41,60 @@
                 </div>
                 {% endif %}
                <h1 class="titulo-grande">{{contra.nombre}}</h1>
+                </div>
             </div>
             <div class="span5">
             </div>
         </div>
         <div class="row detalle-full">
             <div class="span7 divisordoble">
-                <img class="contraparte-detalle-logo"src="{{contra.logo.url_180x160}}" alt="{{contra.nombre}}">
-                <table class="table  table-bordered table-striped table-condensed contraparte-tabla">
-                    <tbody>
-                        {%if contra.pais %}
-                        <tr>
-                            <td><b>País</b></td>
-                            <td><img style="margin-top:-3px" src="/files/img/{{contra.pais.codigo}}.png"> {{contra.pais}}</td>
-                        </tr>
-                        {%endif%}
-                        {%if contra.fundacion%}
-                        <tr>
-                            <td><b>Año de fundación</b></td>
-                            <td>{{contra.fundacion}}</td>
-                        </tr>
-                        {%endif%}
-                        {%if contra.contacto%}
-                        <tr>
-                            <td><b>Contacto</b></td>
-                            <td>{{contra.contacto}}</td>
-                        </tr>
-                        {%endif%}
-                        {%if contra.telefono%}
-                        <tr>
-                            <td><b>Teléfono</b></td>
-                            <td>{{contra.telefono}}</td>
-                        </tr>
-                        {%endif%}
-                        {%if contra.sitio_web%}
-                        <tr>
-                            <td><b>Sitio web</b></td>
-                            <td><a href="{{contra.sitio_web}}">{{contra.sitio_web}}</a></td>
-                        </tr>
-                        {%endif%}
-                    </tbody> 
-                </table>
-                <div class="clean"></div>
-                <br>
-                 {% if contra.temas %}
-                     <div class="destacado-content">Temas</div>
-                     {{contra.temas|safe}}
-                 {% endif %}
-                 {% if contra.generalidades %}
-                     <div class="destacado-content">Generalidades</div>
-                    {{contra.generalidades|safe}}
-                 {% endif %}
+                <div class="content-left">
+                    <img class="contraparte-detalle-logo"src="{{contra.logo.url_180x160}}"alt="{{contra.nombre}}">
+                    <table class="table  table-bordered table-striped table-condensed contraparte-tabla" width="80%">
+                        <tbody>
+                            {%if contra.pais %}
+                            <tr>
+                                <td><b>País</b></td>
+                                <td><img style="margin-top:-3px" src="/files/img/{{contra.pais.codigo}}.png"> {{contra.pais}}</td>
+                            </tr>
+                            {%endif%}
+                            {%if contra.fundacion%}
+                            <tr>
+                                <td><b>Año de fundación</b></td>
+                                <td>{{contra.fundacion}}</td>
+                            </tr>
+                            {%endif%}
+                            {%if contra.contacto%}
+                            <tr>
+                                <td><b>Contacto</b></td>
+                                <td>{{contra.contacto}}</td>
+                            </tr>
+                            {%endif%}
+                            {%if contra.telefono%}
+                            <tr>
+                                <td><b>Teléfono</b></td>
+                                <td>{{contra.telefono}}</td>
+                            </tr>
+                            {%endif%}
+                            {%if contra.sitio_web%}
+                            <tr>
+                                <td><b>Sitio web</b></td>
+                                <td><a href="{{contra.sitio_web}}">{{contra.sitio_web}}</a></td>
+                            </tr>
+                            {%endif%}
+                        </tbody> 
+                    </table>
+                    <div class="clean"></div>
+                    <br>
+                     {% if contra.temas %}
+                         <div class="destacado-content">Temas</div>
+                         {{contra.temas|safe}}
+                     {% endif %}
+                     {% if contra.generalidades %}
+                         <div class="destacado-content">Generalidades</div>
+                        {{contra.generalidades|safe}}
+                     {% endif %}
+                </div>
             </div>
             <div class="span5 divisordoble">
                 <div class="sidebar-title">NOTAS DE ESTA CONTRAPARTE</div>
@@ -112,6 +113,6 @@
             </div>
         </div>
     </div>
-</div> 
+
          
 {% endblock %}

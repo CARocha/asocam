@@ -28,27 +28,27 @@
 </script>
 {%endblock%}
 {% block contenido %}
-<div class="row">
-    <div class="encabezado">
+
+    <div class="encabezado encabezado-interna">
       <div class="container">
             <div class="row">
-                <div class="span5">
+                <div class="span12">
                     <div class="encabezado-title">
                         CONTRAPARTES : <b>EDITAR</b>
                     </div>
                 </div>
-                <div class="span7">
-                </div>
+
             </div>
       </div>
     </div>
-</div>
-<div class="row">
-	<div class="container">
+
+
+	<div class="container internal-content">
 		<div class="row">
 			<form enctype="multipart/form-data" method="post" action=".">{% csrf_token %}
 					{{ form.media }}
 			<div class="span9">
+				<div class="content-left ">
 				<div class="well">
 					{%if form.errors%}
 						<div class="alert alert-error"><b>Favor corregir los siguientes errores</b><br>{{form.errors}}</div>
@@ -109,7 +109,9 @@
 					<hr>
 				</div>
 			</div>
+			</div>
 			<div class="span3">
+				<div class="content-right">
 				<div class="alert "><i class="icon-info-sign"></i>
 				  Esta es la información general de la contraparte que se presenta en la parte pública
 				</div>
@@ -118,8 +120,9 @@
 				<a href="/contrapartes/{{contra.id}}" class="btn btn-large">Cerrar</a>
 				</div>
 			</div>
+			</div>
 			</form>
 		</div>
 	</div>
-</div>
+
 {% endblock %}

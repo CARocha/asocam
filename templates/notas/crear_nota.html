@@ -37,27 +37,25 @@
 </script>
 {%endblock%}
 {% block contenido %}
-<div class="row">
-    <div class="encabezado">
+
+    <div class="encabezado encabezado-interno">
       <div class="container">
             <div class="row">
-                <div class="span5">
+                <div class="span12">
                     <div class="encabezado-title">
-                        NOTAS
+                        CREAR NOTAS
                     </div>
-                </div>
-                <div class="span7">
                 </div>
             </div>
       </div>
     </div>
-</div>
-<div class="row">
-	<div class="container">
+
+	<div class="container internal-content">
 		<div class="row">
 			<form enctype="multipart/form-data" method="post" action=".">{% csrf_token %}
 					{{ form.media }}
 			<div class="span9">
+				<div class="content-left">
 				<div class="well">
 					{%if form.errors%}
 						<div class="alert alert-error"><b>Favor corregir los siguientes errores</b><br>{{form.errors}}</div>
@@ -96,7 +94,9 @@
 					</div>
 				</div>
 			</div>
+			</div>
 			<div class="span3">
+				<div class="content-right">
 				<div class="alert "><i class="icon-info-sign"></i>
 				  Crear una nota para presentar al público un contenido destacado de tu organización
 				</div>
@@ -104,11 +104,12 @@
 				<input class="btn btn-large btn-success " style="" type="submit" id="submitfoo" value="Guardar" />
 				<a href="/notas/{{nota.id}}" class="btn btn-large">Cerrar</a>
 				</div>
+				</div>
 			</div>
 			</form>
 		</div>
 	</div>
-</div>
+
 
 
 {% endblock %}

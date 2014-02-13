@@ -5,11 +5,10 @@
 {% endblock %}
 
 {% block contenido %}
-<div class="row" >
-    <div class="encabezado">
+    <div class="encabezado encabezado-interno">
       <div class="container">
         <div class="row">
-          <div class="span5">
+          <div class="span12">
             <div class="encabezado-title">
             {{flatpage.title}}
             </div>
@@ -17,15 +16,17 @@
         </div>
       </div>
     </div>
-</div>
-<div class="row">
-      <div class="container">
+
+
+      <div class="container internal-content">
           <div class="row">
             <div class="span12">
+              <div style="padding:30px;">
                 {{ flatpage.content }}<br><br>
+              </div>
             </div>
          </div>
     </div>
-</div>
+
 
 {% endblock %}
