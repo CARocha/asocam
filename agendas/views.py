@@ -167,3 +167,45 @@ def calendario_full_contraparte(request,id=None):
     contrapartes_otras = Contraparte.objects.exclude(id__in=request.session['p'])
     return render_to_response('agendas/agenda_list_full.html',locals(),
                               context_instance = RequestContext(request))
+
+
+def documento_publicos(request):
+    documentos = Documentos.objects.all()
+    tags = []
+    for docu in Documentos.objects.all():
+        for tag in Tag.objects.filter(name=docu.tags_doc):
+            tags.append(tag)
+
+    query = request.GET.get('q', '')
+    if query:
+        result_documento = Documentos.objects.filter(nombre_doc__icontains=query)
+        result_tags = Tag.objects.filter(name__icontains=query)
+        lista = []
+        tags_lista = []
+        for n in result_documento:
+            lista.append(n)
+        for rtag in result_tags:
+            TaggedItems = TaggedItem.objects.get_by_model(Documentos, rtag.name)
+            if not rtag.items.all().count() == 0:
+                li = []
+                for it in rtag.items.all():
+                    if it.object:
+                        li.append(it)
+                tags_lista.append({'name':rtag.name, 'count': len(li)})
+            for item in TaggedItems:
+                lista.append(item)
+        #tags.sort(key=operator.itemgetter('count'), reverse=True)
+        documentos = list(set(lista))
+
+    return render_to_response('agendas/documentos.html', RequestContext(request, locals()))
+
+
+def busqueda_tag_publico(request, tags):
+    tag_sel = get_object_or_404(Tag, name=tags)
+    tags = []
+    for docu in Documentos.objects.all():
+        for tag in Tag.objects.filter(name=docu.tags_doc):
+            tags.append(tag)
+    todos = TaggedItem.objects.get_by_model(Documentos, tag_sel.name)
+    return render_to_response('agendas/documentos_tag.html', RequestContext(request, locals()))
+

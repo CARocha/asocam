@@ -1,6 +1,7 @@
-{% extends "baseadmin.html" %}
+{% extends "baseinterna.html" %}
 
 {% block contenido %}
+
     <div class="encabezado encabezado-interno">
       <div class="container">
             <div class="row">
@@ -15,6 +16,7 @@
       </div>
     </div>
 
+
 	<div class="container internal-content">
 		<div class="row">
 			<div class="span3">
@@ -24,19 +26,18 @@
 					    BUSCAR
 					  </li>
 					  <li>
-						<form class="form-search form-inline">
-						  <input type="text" class="input-medium search-query" style="width:115px">
+						<form class="form-search form-inline" action="." method="GET">
+						  <input type="text" class="input-medium search-query" style="width:100px" name="q" value="{% if query %} {{query}} {% endif%}" />
 						  <button type="submit" class="btn"><i class="icon-search button-icon"></i></button>
 						</form>
 					  </li>
 					  <li class="nav-header">
 					    TAGS
 					  </li>
-				{% for t in tags %}
-					<li {%if t == tag_sel%}class="active"{%endif%} ><a href="/foros/privado/documento_tag/{{t}}"><i class="icon-tag"></i>{{t}}</a></li>
+				{% for tag in tags %}
+					<li><a href="/foros/privado/documento_tag/{{tag}}"><i class="icon-tag"></i>{{tag}}</a></li>
 				{% endfor %}
 				</ul>
-				<br><br>
 				</div>
 			</div>
 			<div class="span9">
@@ -49,7 +50,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						{% for a in todos %}
+						{% for a in documentos %}
 							{% if a.nombre_doc != '' %}
 								<tr>
 									<td>{{a.nombre_doc}}</td>
