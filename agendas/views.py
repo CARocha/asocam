@@ -79,7 +79,7 @@ def borrar_agenda(request, id):
 @login_required
 def calendario(request,id=None):
     paises = Pais.objects.all()
-    contrapartes = Contraparte.objects.all()
+    contrapartes = Contraparte.objects.filter(visible=True)
 
     if request.is_ajax():
         start = datetime.datetime.fromtimestamp(float(request.GET['start']))
@@ -107,7 +107,7 @@ def calendario(request,id=None):
 
 def calendario_publico(request,id=None):
     paises = Pais.objects.all()
-    contrapartes = Contraparte.objects.all()
+    contrapartes = Contraparte.objects.filter(visible=True)
     if request.is_ajax():
         start = datetime.datetime.fromtimestamp(float(request.GET['start']))
         end = datetime.datetime.fromtimestamp(float(request.GET['end']))
