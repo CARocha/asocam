@@ -173,7 +173,7 @@ def notify_all_notas(notas):
                                  'url': '%s/notas/%s' % (site, notas.id),
                                  #'url_aporte': '%s/foros/ver/%s/#aporte' % (site, foros.id),
                                  })
-    send_mail('Nueva Nota en Innovaparadet', contenido, 'asocam@asocam.org', [user.email for user in users if user.email])
+    send_mail('Nueva Nota en Innovaparadet', contenido, 'admin@innovaparader.info', [user.email for user in users if user.email])
 
 @login_required
 def comentar_nota(request, id):
