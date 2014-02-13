@@ -5,7 +5,7 @@
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
-	<title>{%block title%}ASOCAM{%endblock%}</title>
+	<title>{%block title%}Innovaparadet{%endblock%}</title>
   <!--[<link type="text/css" rel="stylesheet"  href="/files/css/cafod.css">-->
   {% load compress %} 
   {% compress css %}
@@ -51,11 +51,11 @@
             <div class="container">
               <ul class="nav" id="menu-principal">
                 <li class="active"><a href="/"><img src="/files/img/home-icon.png"></a></li>
-                <li><a href="/notas">NOTICIAS</a></li>
-                <li><a href="#">SOBRE LA INICIATIVA DE INTERCAMBIO </a></li>
-                <li><a href="#">PROPÓSITOS Y RESULTADOS </a></li>
-                <li><a href="#">¿QUÉ ENTENDEMOS POR INNOVACIÓN? </a></li>
-                <li><a href="#">¿QUÍENES PARTICIPAN? </a></li>
+                <li><a href="/notas/">NOTICIAS</a></li>
+                <li><a href="/sobre-iniciativa/">SOBRE LA INICIATIVA DE INTERCAMBIO </a></li>
+                <li><a href="/proposito-resultado/">PROPÓSITOS Y RESULTADOS </a></li>
+                <li><a href="/entendemos-innovacion/">¿QUÉ ENTENDEMOS POR INNOVACIÓN? </a></li>
+                <li><a href="/participan/">¿QUÍENES PARTICIPAN? </a></li>
                 <li><a href="#">RECURSOS </a></li>
               </ul>
               <ul class="nav pull-right">
@@ -75,9 +75,13 @@
           </div>
           <div class="span9" id="barra-admin">
             <div class="divisor-barra-admin"></div>
-            <a href="/foros/privado/nota" class="notaiconadmin">Mis Notas</a>
+            {% if request.user.is_superuser %}
+              <a href="/foros/privado/nota" class="notaiconadmin">Mis Notas</a>
+            {% endif %}
             <div class="divisor-barra-admin"></div>
-            <a href="/agendas/calendario" class="agendaiconadmin">Mi Agenda</a>
+            {% if  request.user.is_superuser %}
+              <a href="/agendas/calendario" class="agendaiconadmin">Mi Agenda</a>
+            {% endif %}
             <div class="divisor-barra-admin"></div>
             <a href="/foros" class="foroiconadmin">Foro</a>
             <div class="divisor-barra-admin"></div>

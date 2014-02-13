@@ -121,11 +121,13 @@ $(document).ready(function() {
 							<td><b>Cierre de aportes</b></td>
 							<td>{{discusion.cierre}}</td>
 						</tr>
-						<tr>
-							<td><img src="/files/img/user_comment.png"></td>
-							<td><b>Reunión skype</b></td>
-							<td>{{discusion.fecha_skype}}</td>
-						</tr>
+						{% if  discusion.fecha_skype %}
+							<tr>
+								<td><img src="/files/img/user_comment.png"></td>
+								<td><b>Reunión skype</b></td>
+								<td>{{discusion.fecha_skype}}</td>
+							</tr>
+						{% endif %}
 						<tr>
 							<td><img src="/files/img/page_edit.png"></td>
 							<td><b>Memoria</b></td>

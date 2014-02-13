@@ -49,9 +49,11 @@
 		        		<th>
 		        			Cierre de aportes <img src="/files/img/group_delete.png">
 		        		</th>
-		        		<th>
-		        			Foro Skype <img src="/files/img/user_comment.png">
-		        		</th>
+                        {% if foro.fecha_skype %}
+                            <th>
+                                Foro Skype <img src="/files/img/user_comment.png">
+                            </th>
+                        {% endif %}
 		        		<th>
 		        			Entrega de memoria <img src="/files/img/page_edit.png">
 		        		</th>
@@ -65,9 +67,11 @@
 		        		<td>
 		        			{{foro.cierre}}
 		        		</td>
-		        		<td>
-		        			{{foro.fecha_skype}}
-		        		</td>
+                        {% if foro.fecha_skype %}
+                            <td>
+                                {{foro.fecha_skype}}
+                            </td>
+                        {% endif %}
 		        		<td>
 		        			{{foro.memoria}}
 		        		</td>
