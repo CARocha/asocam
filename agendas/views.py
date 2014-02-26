@@ -12,6 +12,7 @@ from django.contrib.contenttypes.generic import generic_inlineformset_factory
 from django.utils import simplejson
 import datetime
 from django.template.defaultfilters import escape
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 # Create your views here.
 
 @login_required
@@ -170,7 +171,7 @@ def calendario_full_contraparte(request,id=None):
 
 
 def documento_publicos(request):
-    documentos = Documentos.objects.all()
+    documentos = Documentos.objects.order_by('-id')
     tags = []
     for docu in Documentos.objects.all():
         for tag in Tag.objects.filter(name=docu.tags_doc):
@@ -196,6 +197,16 @@ def documento_publicos(request):
                 lista.append(item)
         #tags.sort(key=operator.itemgetter('count'), reverse=True)
         documentos = list(set(lista))
+
+    paginator = Paginator(documentos, 10)
+
+    page = request.GET.get('page')
+    try:
+        notas = paginator.page(page)
+    except PageNotAnInteger:
+        notas = paginator.page(1)
+    except EmptyPage:
+        notas = paginator.page(paginator.num_pages)
 
     return render_to_response('agendas/documentos.html', RequestContext(request, locals()))
 

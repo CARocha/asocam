@@ -50,7 +50,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						{% for a in documentos %}
+						{% for a in notas %}
 							{% if a.nombre_doc != '' %}
 								<tr>
 									<td>{{a.nombre_doc}}</td>
@@ -62,6 +62,31 @@
 				</table>
 				</div>
 			</div>
+
+        <div class="content-left">
+            <ul class="pagination">
+                {% if notas.has_previous %}
+                <li>
+                  <a href="{% url documento_publicos %}?page={{ notas.previous_page_number }}">
+                    ← Anterior</a>
+                </li>
+                {% endif %}
+
+                <li class="active">
+                    {% for numero in notas.paginator.page_range%}
+                        <a href="{% url documento_publicos %}?page={{numero}}">{{numero}}</a>
+                    {%endfor%}
+                </li>
+
+                {% if notas.has_next %}
+                 <li>
+                 <a href="{% url documento_publicos %}?page={{ notas.next_page_number }}">
+                        Siguiente →</a>
+                 </li>
+                 {% endif %}
+            </ul>
+        </div>
+
 		</div>
 	</div>
 {% endblock %}
